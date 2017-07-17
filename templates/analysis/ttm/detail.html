@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="{{url_for('index')}}" target="_self">Home</a></li>
+                <li><a href="{{url_for('ttm')}}" target="_self">Tissue type maintain TFs (ttmTF)</a></li>
+                <li class="active">ttmTFs for each tissue</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="tissue-title"></h2>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="analysis">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Adrenal gland.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/BAT.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Bladder.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Blood.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Brain.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Colon.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Eye.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Heart.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Kidney.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Liver.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Lung.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Pancreas.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Seminal vesicle.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Skeletal muscle.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Skin.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Small intestine.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Spinal cord.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Spleen.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Stomach.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Testis.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Thymus.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Thyroid.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/Tongue.jpg')}}">
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttmImg/WAT.jpg')}}">
+    </div>
+</div>
+{% endblock %}

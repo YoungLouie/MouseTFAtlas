@@ -1,0 +1,94 @@
+html{
+    height: 100%
+}
+body {
+    padding-top: 70px;
+    height: 100%
+}
+.content{
+    min-height: 100%;
+    padding-bottom: 30px
+}
+footer {
+    padding-top: 10px;
+    text-align: center;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+    margin-top: -30px;
+    height: 30px
+}
+table>thead>tr>th{
+    background-color: #eeeeee;
+    text-align: center
+}
+
+/*tissue*/
+
+.breadcrumb>li>a {
+    color: #000000;
+}
+
+.breadcrumb>li>a:hover {
+    text-decoration: none;
+    color: #428bca;
+}
+
+.tissue-title {
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 40px;
+}
+
+.bar-chart {
+    background-color: #428bca;
+    width: 15%;
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: -2px
+}
+
+.td-bar {
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+    text-align: center;
+    min-width: 53px
+}
+
+
+/*tf*/
+
+.description {
+    background-color: #E5ECF7;
+    margin-top: 5px;
+    margin-bottom: 5px
+}
+.tf-table tbody tr td {
+	padding:10px 8px 5px 8px;
+	border-bottom: none;
+	border-top: none;
+	border-right: 1px solid #999;
+	text-align: center;
+}
+
+/*download*/
+.download-table>tbody>tr>:nth-child(odd){
+    text-align: center;
+}
+
+ /*analysis*/
+ .space{
+     margin-bottom: 50px;
+ }
+ .detail{
+     float:right;
+     font-weight: 100;
+     color: #000000
+ }
+ .analysis img{
+     margin-left: auto;
+     margin-right:auto; 
+ }
+ .TFlist-table>tbody>tr>td{
+     font-size: 12px;
+     font-weight: 200
+ }

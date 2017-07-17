@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block script %}
+<script type="text/javascript">
+	window.onload=function(){
+		changePosition();
+	};
+</script>
+{% endblock %}
+{% block content %}
+		<div class="container">
+			<div class="jumbotron">
+				<h1>Mouse TF Atlas</h1>
+				<p>The 24 adult mouse tissues and 8 fetal tissues analyzed to generate a draft map of the mouse TF atlas are shown. The same font color indicates that the tissues are from the same physiological system. The ambient arcs show the layers from which the tissues developed. Red: ectoderm; Blue: mesoderm; Brown: endoderm.</p>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<img id="adult-img" class="img-responsive" src="{{url_for('static',filename='img/adult.jpg')}}" usemap="#adult" alt="adult">
+					<map id="adult" name="adult" >
+						<area id="a0" shape="rect" href="{{url_for('tissue',tissueName='Eye',page=0)}}" target="_blank" coords=""/>
+						<area id="a1" shape="rect" href="{{url_for('tissue',tissueName='Brain',page=0)}}" target="_blank"/>
+						<area id="a2" shape="rect" href="{{url_for('tissue',tissueName='Spinal cord',page=0)}}" target="_blank"/>
+						<area id="a3" shape="rect" href="{{url_for('tissue',tissueName='Lung',page=0)}}" target="_blank"/>
+						<area id="a4" shape="rect" href="{{url_for('tissue',tissueName='Stomach',page=0)}}" target="_blank"/>
+						<area id="a5" shape="rect" href="{{url_for('tissue',tissueName='Small intestine',page=0)}}" target="_blank"/>
+						<area id="a6" shape="rect" href="{{url_for('tissue',tissueName='Colon',page=0)}}" target="_blank"/>
+						<area id="a7" shape="rect" href="{{url_for('tissue',tissueName='Liver',page=0)}}" target="_blank"/>
+						<area id="a8" shape="rect" href="{{url_for('tissue',tissueName='Pancreas',page=0)}}" target="_blank"/>
+						<area id="a9" shape="rect" href="{{url_for('tissue',tissueName='Tongue',page=0)}}" target="_blank"/>
+						<area id="a10" shape="rect" href="{{url_for('tissue',tissueName='Skeletal muscle',page=0)}}" target="_blank"/>
+						<area id="a11" shape="rect" href="{{url_for('tissue',tissueName='BAT',page=0)}}" target="_blank"/>
+						<area id="a12" shape="rect" href="{{url_for('tissue',tissueName='WAT',page=0)}}" target="_blank"/>
+						<area id="a13" shape="rect" href="{{url_for('tissue',tissueName='Seminal vesicle',page=0)}}" target="_blank"/>
+						<area id="a14" shape="rect" href="{{url_for('tissue',tissueName='Testis',page=0)}}" target="_blank"/>
+						<area id="a15" shape="rect" href="{{url_for('tissue',tissueName='Thymus',page=0)}}" target="_blank"/>
+						<area id="a16" shape="rect" href="{{url_for('tissue',tissueName='Spleen',page=0)}}" target="_blank"/>
+						<area id="a17" shape="rect" href="{{url_for('tissue',tissueName='Adrenal gland',page=0)}}" target="_blank"/>
+						<area id="a18" shape="rect" href="{{url_for('tissue',tissueName='Thyroid',page=0)}}" target="_blank"/>
+						<area id="a19" shape="rect" href="{{url_for('tissue',tissueName='Heart',page=0)}}" target="_blank"/>
+						<area id="a20" shape="rect" href="{{url_for('tissue',tissueName='Blood',page=0)}}" target="_blank"/>
+						<area id="a21" shape="rect" href="{{url_for('tissue',tissueName='Bladder',page=0)}}" target="_blank"/>
+						<area id="a22" shape="rect" href="{{url_for('tissue',tissueName='Kidney',page=0)}}" target="_blank"/>
+						<area id="a23" shape="rect" href="{{url_for('tissue',tissueName='Skin',page=0)}}" target="_blank"/>
+					</map>
+	            </div>
+				<div class="col-lg-6">
+					<img id="fetal-img" class="img-responsive" src="{{url_for('static',filename='img/fetal.jpg')}}" usemap="#fetal" alt="fetal">
+					<map id="fetal" name="fetal">
+						<area id="f0" shape="rect" href="{{url_for('tissue',tissueName='Fetal Brain 13.5days',page=0)}}" target="_blank"/>
+						<area id="f1" shape="rect" href="{{url_for('tissue',tissueName='Fetal Brain 18.5days',page=0)}}" target="_blank"/>
+						<area id="f2" shape="rect" href="{{url_for('tissue',tissueName='Fetal Liver 13.5days',page=0)}}" target="_blank"/>
+						<area id="f3" shape="rect" href="{{url_for('tissue',tissueName='Fetal Liver 18.5days',page=0)}}" target="_blank"/>
+						<area id="f4" shape="rect" href="{{url_for('tissue',tissueName='Embryo 6.5days',page=0)}}" target="_blank"/>
+						<area id="f5" shape="rect" href="{{url_for('tissue',tissueName='Uterus 1.5days',page=0)}}" target="_blank"/>
+						<area id="f6" shape="rect" href="{{url_for('tissue',tissueName='Placenta 18.5days',page=0)}}" target="_blank"/>
+						<area id="f7" shape="rect" href="{{url_for('tissue',tissueName='MEF',page=0)}}" target="_blank"/>
+					</map>
+	            </div>
+			</div>
+		</div>
+{% endblock %}
+{% block changePosition %}
+function changePosition(){
+	var adultPosition=[[0.1353,0.5208,0.1810,0.5506],[0.1362,0.4357,0.1988,0.4613],[0.1470,0.3370,0.2792,0.3660],[0.2368,0.2877,0.2978,0.3183],[0.3189,0.2392,0.4263,0.2647],[0.3519,0.2025,0.5237,0.2255],[0.5033,0.1787,0.5753,0.2043],[0.5837,0.1932,0.6438,0.2187],[0.6252,0.2246,0.7335,0.2502],[0.7022,0.2629,0.7961,0.2885],[0.7800,0.3625,0.8646,0.3890],[0.7673,0.4323,0.8663,0.4578],[0.8172,0.5055,0.8748,0.5319],[0.7944,0.5693,0.8942,0.6306],[0.7944,0.6800,0.8646,0.7064],[0.7208,0.7412,0.8173,0.7668],[0.7098,0.8093,0.7919,0.8366],[0.5499,0.8149,0.7166,0.9030],[0.4357,0.8885,0.5296,0.9149],[0.3485,0.8740,0.4179,0.9004],[0.3079,0.8187,0.3790,0.8451],[0.1963,0.7676,0.2902,0.7958],[0.1463,0.6672,0.2318,0.6987],[0.1421,0.5932,0.1954,0.6196]];
+	var width=$("img[alt='adult']").width();
+	var height=$("img[alt='adult']").height();
+	for (let i=0;i<adultPosition.length;i++){
+		let x1=adultPosition[i][0]*width;
+		let y1=adultPosition[i][1]*height;
+		let x2=adultPosition[i][2]*width;
+		let y2=adultPosition[i][3]*height;
+		$("#a"+i).attr("coords",x1+','+y1+','+x2+','+y2);
+	}
+	var fetalPosition=[[0.1446,0.2153,0.2504,0.2426],[0.2707,0.2161,0.3748,0.2477],[0.4636,0.2,0.5685,0.2298],[0.5854,0.2025,0.6887,0.2315],[0.7487,0.3897,0.8435,0.4213],[0.7698,0.651,0.8528,0.68],[0.4357,0.7532,0.5398,0.7804],[0.2157,0.6638,0.2682,0.6902]];
+	width=$("img[alt='fetal']").width();
+	height=$("img[alt='fetal']").height();
+	for (let i=0;i<fetalPosition.length;i++){
+		let x1=fetalPosition[i][0]*width;
+		let y1=fetalPosition[i][1]*height;
+		let x2=fetalPosition[i][2]*width;
+		let y2=fetalPosition[i][3]*height;
+		$("#f"+i).attr("coords",x1+','+y1+','+x2+','+y2);
+	};
+}
+{% endblock %}
+{% block resize %} 	
+	$(window).resize(function(){
+		changePosition();
+	});
+{% endblock %}

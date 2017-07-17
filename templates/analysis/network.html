@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li class="active">Data analysis</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="tissue-title">Hierarchical Network of TF Families</h2>
+        </div>
+    </div>
+</div>
+<div class="container analysis">
+    <div class="space">
+        <p>Unsupervised hierarchical clustering of DNA binding activities of nuclear receptors (NRs) and the comparison with mRNA expressions. NRs were grouped into two main clusters (I and II) and five sub-clusters (IA, IB, IC, IIA, and IIB). The comparison with mRNA is shown on the right color block.</p>
+        <img class="img-responsive" src="{{url_for('static',filename='img/network_1.jpg')}}">
+    </div>
+    <div class="space">
+        <p>The "NR Ring of Physiology" derived from DNA-binding activity. The dendrogram is depicted based on the hierarchical clustering, revealing NR clusters in different tissues.</p>
+        <img  class="img-responsive" src="{{url_for('static',filename='img/network_2.jpg')}}">
+    </div>
+    <div class="space">
+        <p>Unsupervised hierarchical clustering of other TF families. Blocks with different colors represent different physiological systems. The annotations in the blocks are the GO enrichment terms for the TGs that were co-regulated by at least 2 TFs in the block.</p>
+        <img  class="img-responsive" src="{{url_for('static',filename='img/network_3.jpg')}}">
+    </div>
+</div>
+{% endblock %}

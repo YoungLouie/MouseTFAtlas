@@ -1,0 +1,102 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li class="active">{{tissueName}}</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="tissue-title">Total of {{metadata['total']}} TFs Exposed in {{tissueName}}</h2>
+        </div>
+    </div>
+</div>
+<div class="container table-responsive">
+    <table class="tissue-table table table-bordered table-hover ">
+        <thead>
+            <tr>
+                <th rowspan="2">Transcription Factor</th>
+                <th rowspan="2">Description</th>
+                <th colspan="
+                            {% if metadata['repetition']==1 %}
+                            {{1}}
+                            {% else %}
+                            {{metadata['repetition']+2}}
+                            {% endif %}">Expression Level(Fot*10<sup>10</sup> Log change)</th>
+                <th rowspan="2">Annotation</th>
+            </tr>
+            <tr>
+                {% if metadata['repetition']>1 %}
+                <th>Mean</th>
+                {% for re in range(metadata['repetition']) %}
+                <th>{{repetitionThead[re]}} repetition</th>
+                {% endfor %}
+                <th style="min-width:80px">Bar Chart</th>
+                {% else %}
+                <th>First repetition</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in tissueGene %}
+            <tr>
+                <td><a href="{{url_for('tf',geneSymbol=row['gene_symbol'],isSearch=0)}}">{{row['gene_symbol']}}</a></td>
+                <td>{{row['description']}}</td>
+                {% if metadata['repetition']>1 %}
+                <td>{{row['mean']|logFot}}</td>
+                {% set fot=row['fot'].split(',') %} 
+                {% for f in fot %}
+                <td>{{f|float|logFot}}</td>
+                {% endfor %}
+                <td class="td-bar">
+                    {% for i in range(fot|length) %}
+                    <div class="bar-chart" style="height:{{fot[i]|float|logFot/9*40}}px"></div>
+                    {% endfor %}
+                </td>
+                {% else %}
+                <td>{{row['fot']|float|logFot}}</td>
+                {% endif %}
+                <td>
+                    <a href=""><img src="{{url_for('static',filename='img/annotation.gif')}}"></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <div style="float:right">
+        <nav>
+            <ul class="pagination">
+                <li {% if page[ 'prev'] is sameas False %} class="disabled" {% endif %}>
+                    {% set prevPage=0 %}
+                    {% if page['page']>=5 %}
+                    {% set prevPage=page['page']-5 %}
+                    {% endif %}
+                    <a href="{{url_for('tissue',tissueName=tissueName,page=prevPage)}}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="active"><a href="#top">{{(page['page']+1)|string}}</a></li>
+                {% for i in range(2,page['block']+1) %}
+                <li><a href="{{url_for('tissue',tissueName=tissueName,page=page['page']+i-1)}}">{{(page['page']+i)|string}}</a></li>
+                {% endfor %}
+                <li{% if page['next'] is sameas False %} class="disabled" {% endif %}>
+                    {% set nextPage=0 %}
+                    {% if page['next'] %}
+                    {% set nextPage=page['page']+page['block'] %}
+                    {% else %}
+                    {% set nextPage=page['page']+page['block']-1 %}
+                    {% endif %}
+                    <a href="{{url_for('tissue',tissueName=tissueName,page=nextPage)}}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,214 @@
+{% block script %}
+<script src="{{url_for('static',filename='js/Chart.min.js')}}"></script>
+{% endblock %}
+{% extends 'base.html' %} 
+{% block content %}
+{% for geneTissue,geneSymbol,info in gT_gS_info %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li class="active">{{geneSymbol['gene_symbol']}}</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="tissue-title">{{geneSymbol['gene_symbol']}}</h2>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row description">
+        <div class="col-lg-2">
+            <h4>Description</h4>
+        </div>
+        <div class="col-lg-8">
+            <h5>{{info['description']}}</h5>
+        </div>
+        <div class="col-lg-2" style="margin-top:10px">
+            <a href="">Annotation</a>
+            <img src="{{url_for('static',filename='img/annotation.gif')}}">
+        </div>
+    </div>
+    <div class="row description">
+        <div class="col-lg-4">
+            <h4>Fetal Special TF</h4>
+        </div>
+        <div class="col-lg-4">
+            <h4>{{info['fetalTf']|default('No',true)}}</h4>
+        </div>
+    </div>
+    <div class="row description">
+        <div class="col-lg-4">
+            <h4>Derm Special TF</h4>
+        </div>
+        <div class="col-lg-4">
+            <h4>{{info['dermTf']|default('No',true)}}</h4>
+        </div>
+   </div>
+    <div class="row description">
+        <div class="col-lg-4">
+            <h4>Tissue-type Maintenance TF</h4>
+        </div>
+        <div class="col-lg-4">
+            <h4>{{info['ttmTf']|default('No',true)}}</h4>
+        </div>
+   </div>
+</div>
+<div class="container table-responsive">
+    <h4 style="text-align:center">Tissue Distribution & Statistic</h4>
+    <table class="table tf-table">
+        <tbody>
+            <tr>
+                <td></td>
+                {% for row in geneTissue if row['mean']!=0 %}
+                {% if loop.index0<16 %}
+                <td>{{row['tissue_name']}}</td>
+                {% else  %}
+                {% break %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+            <tr>
+                <td></td>
+                {% for row in geneTissue if row['mean']!=0 %}
+                {% if loop.index0<16 %}
+                {% set fot=row['fot'].split(',') %}
+                <td class="td-bar">
+                    {% for value in fot %}
+                    <div class="bar-chart" style="height:{{value|float|logFot/6*40}}px"></div>
+                    {% endfor %}
+                </td>
+                {% else  %}
+                {% break %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>repetition</td>
+                {% for row in geneTissue if row['mean']!=0%}
+                {% if loop.index0<16 %}
+                <td>{{row['repetition']}}</td>
+                {% else  %}
+                {% break %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>mean<br>(10<sup>-6</sup>)</td>
+                {% for row in geneTissue if row['mean']!=0 %}
+                {% if loop.index0<16 %}
+                <td>{{(row['mean']*1000000)|round(3)}}</td>
+                {% else  %}
+                {% break %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>stdev<br>(10<sup>-6</sup>)</td>
+                {% for row in geneTissue if row['mean']!=0 %}
+                {% if loop.index0<16 %}
+                <td>{{(row['stdev']*1000000)|round(3)}}</td>
+                {% else  %}
+                {% break %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>CV</td>
+                {% for row in geneTissue if row['mean']!=0 %}
+                {% if loop.index0<16 %}
+                <td>{{(row['cv']*100)|round(1)}}%</td>
+                {% else  %}
+                {% break %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+            {% if info['count']>16 %}
+            <tr>
+                <td></td>
+                {% for row in geneTissue if row['mean']!=0%}
+                {% if loop.index0>=16 %}
+                <td>{{row['tissue_name']}}</td>
+                {% else  %}
+                {% continue %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+            <tr>
+                <td></td>
+                {% for row in geneTissue if row['mean']!=0 %}
+                {% if loop.index0>=16 %}
+                {% set fot=row['fot'].split(',') %}
+                <td class="td-bar">
+                    {% for value in fot %}
+                    <div class="bar-chart" style="height:{{value|float|logFot/6*40}}px"></div>
+                    {% endfor %}
+                </td>
+                {% else  %}
+                {% continue %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>repetition</td>
+                {% for row in geneTissue if row['mean']!=0 %}
+                {% if loop.index0>=16 %}
+                <td>{{row['repetition']}}</td>
+                {% else  %}
+                {% continue %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>mean<br>(10<sup>-6</sup>)</td>
+                {% for row in geneTissue if row['mean']!=0 %}
+                {% if loop.index0>=16 %}
+                <td>{{(row['mean']*1000000)|round(3)}}</td>
+                {% else  %}
+                {% continue %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>stdev<br>(10<sup>-6</sup>)</td>
+                {% for row in geneTissue if row['mean']!=0 %}
+                {% if loop.index0>=16 %}
+                <td>{{(row['stdev']*1000000)|round(3)}}</td>
+                {% else  %}
+                {% continue %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>CV</td>
+                {% for row in geneTissue if row['mean']!=0%}
+                {% if loop.index0>=16 %}
+                <td>{{(row['cv']*100)|round(1)}}%</td>
+                {% else  %}
+                {% continue %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <canvas id="{{geneSymbol['gene_symbol']}}"></canvas>
+    <script type="text/javascript">
+        var ctx=document.getElementById("{{geneSymbol['gene_symbol']}}").getContext("2d");
+        var lab= ["MEF","Brain13.5d","Brain18.5d","Liver13.5d","Liver18.5d","Placenta18.5d","Uterus1.5d","Embryo6.5d","Brain","Eye","WAT","Liver","Lung","Pancreas","Testis","Spinal cord","Thymus","Thyroid","Adrenal gland","BAT","Blood","Seminal vesicle","Kidney","Skeletal muscle","Spleen","Colon","Skin","Small intestine","Heart","Bladder","Stomach","Tongue"];
+        var data=[
+        {% set concat=joiner(',') %}
+        {% for row in geneTissue %}
+            {{concat()}}{{row['mean']}}
+        {% endfor %}
+        ];
+        var myChart = new Chart(ctx, {type: 'bar',data:{labels:lab,datasets: [{label: 'Fot',data:data,backgroundColor: "#6495ED" }]},options: {scales:{yAxes:[{ticks:{beginAtZero:true}}]}}});
+    </script>
+</div>
+{% endfor %}
+{% endblock %}

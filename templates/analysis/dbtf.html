@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li class="active">Data analysis</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="tissue-title">Ubiquitous and tissue-restricted DBTFs</h2>
+        </div>
+    </div>
+</div>
+<div class="container analysis">
+    <div class="space">
+        <p>Heatmap for non-ubiquitous (71.3%), ubiquitous-uniform (3.1%) or ubiquitous non-uniform (25.6%) TFs. The color bar on the right indicates the relative expression abundance.</p>
+        <img class="img-responsive" src="{{url_for('static',filename='img/dbtf_1.jpg')}}">
+    </div>
+    <div >
+        <p>Distributions of ubiquitous and ttrTFs and their relative abundances in 24 adult tissues. The abundance of the TFs spans almost 7 orders of magnitude. The names of the top 3 most abundant TFs are listed.</p>
+        <img style="padding-bottom:40px" class="img-responsive" src="{{url_for('static',filename='img/dbtf_2.jpg')}}">
+    </div>
+</div>
+{% endblock %}

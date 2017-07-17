@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li class="active">Data analysis</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="tissue-title">TF expression overview</h2>
+        </div>
+    </div>
+</div>
+<div class="container analysis">
+    <div class="space">
+        <p>Heatmap of deep TF DNA binding activity profiling (DBAP) TFs were in rows, 24 adult mouse tissues and 8 fetal tissues were in columns.</p>
+        <img class="img-responsive" src="{{url_for('static',filename='img/expression_1.jpg')}}">
+    </div>
+    <div class="space">
+        <p>Cumulative protein mass from the highest to the lowest abundance TFs in 24 adult tissues. Tfam ranked the first abundant TF in 3 tissues, namely, spinal cord, seminal vesical and lung. All were with ifot fraction more than 50%.</p>
+        <img style="padding-bottom:40px" class="img-responsive" src="{{url_for('static',filename='img/expression_2.jpg')}}">
+    </div>
+    <div>
+        <p>Number of tissues in which transcription factors are expressed in NE. Most TFs expressed specifically (in only 1-2 tissues).</p>
+        <img style="padding-bottom:40px" class="img-responsive" src="{{url_for('static',filename='img/expression_3.jpg')}}">
+    </div>
+</div>
+{% endblock %}

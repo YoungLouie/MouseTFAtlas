@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li class="active">Data analysis</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="tissue-title">Tissue type maintain TFs (ttmTF)</h2>
+        </div>
+    </div>
+</div>
+<div class="container analysis">
+    <div class="space">
+        <p>ttmTFs for each tissue are identified with high Z-scores (>1) and TG Z-scores that are higher than those from random data. X-axis represents the number of target genes, Y-axis represents the average TG z-scores. Hierarchical network of TFs with a three-tiered organization—expressed TFs, tissue–type-restricted TFs (ttrTFs), and tissue-type-maintenance TFs (ttmTFs), was shown on the right.</p>
+        <a class="detail" href="{{url_for('ttmDetail')}}" target="_self">See ttmTFs for each tissue</a>
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttm_1.jpg')}}">
+    </div>
+    <div class="space">
+        <p>The number of identified ttmTFs in the 24 adult tissues. No ttmTFs were found in thyroid and the seminal vesicle.</p>
+        <img class="img-responsive" src="{{url_for('static',filename='img/ttm_2.jpg')}}">
+    </div>
+</div>
+{% endblock %}

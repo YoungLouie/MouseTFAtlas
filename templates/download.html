@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li class="active">Download</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="tissue-title">Data of Atlas</h2>
+        </div>
+    </div>
+</div>
+<div class="container table-responsive">
+    <table class="download-table table table-bordered table-hover ">
+        <thead >
+            <tr>
+                <th width="20%">Name</th>
+                <th>Description</th>
+                <th width="15%">Download<i class="glyphicon glyphicon-download-alt"></i></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Table S1</td>
+                <td>TFs identified in 32 mouse tissues and cumulative distribution</td>
+                <td><a href="{{url_for('static',filename='STables/Table S1.xlsx')}}"><i class="glyphicon glyphicon-download-alt"/> </a></td>
+            </tr>
+            <tr>
+                <td>Table S2</td>
+                <td>TF classification in 24 adult tissues</td>
+                <td><a href="{{url_for('static',filename='STables/Table S2.xlsx')}}"><i class="glyphicon glyphicon-download-alt"/> </a></td>
+            </tr>
+            <tr>
+                <td>Table S3</td>
+                <td>Further details on the NR family and other TF sub-families</td>
+                <td><a href="{{url_for('static',filename='STables/Table S3.xlsx')}}"><i class="glyphicon glyphicon-download-alt"/> </a></td>
+            </tr>
+            <tr>
+                <td>Table S4</td>
+                <td>Further details of the DBTF co-expression pattern</td>
+                <td><a href="{{url_for('static',filename='STables/Table S4.xlsx')}}"><i class="glyphicon glyphicon-download-alt"/> </a></td>
+            </tr>
+            <tr>
+                <td>Table S5</td>
+                <td>TF interactions in each adult tissue and top 30 differentially expressed TFs</td>
+                <td><a href="{{url_for('static',filename='STables/Table S5.xlsx')}}"><i class="glyphicon glyphicon-download-alt"/> </a></td>
+            </tr>
+            <tr>
+                <td>Table S6</td>
+                <td>Further details of the ttmTFs identified in each adult tissue</td>
+                <td><a href="{{url_for('static',filename='STables/Table S6.xlsx')}}"><i class="glyphicon glyphicon-download-alt"/> </a></td>
+            </tr>
+            <tr>
+                <td>Table S7</td>
+                <td>Temporal TFRE and profiling data at each time point during liver regeneration after PHx</td>
+                <td><a href="{{url_for('static',filename='STables/Table S7.xlsx')}}"><i class="glyphicon glyphicon-download-alt"/> </a></td>
+            </tr>
+        </tbody>
+    </table>
+</div> 
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li class="active">Data analysis</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="tissue-title">TF co-expression modules</h2>
+        </div>
+    </div>
+</div>
+<div class="container analysis">
+    <div class="space">
+        <p>Co-expression blocks of TFs. Thirty seven co-expresseion blocks of TFs were identified in 24 adult organs. Cosine similarity was used to evaluate the correlations between the TFs. An angle of 66.4° (Pearson’s correlation coefficient: 0.4) was used as a cutoff, and Kendall's Tau test was applied to test for significance.</p>
+        <img class="img-responsive" src="{{url_for('static',filename='img/coexpression_1.jpg')}}">
+    </div>
+    <div class="space">
+        <p>Unsupervised hierarchical clustering of the 37 co-expression modules. Six clusters were grouped according to their different tissue distribution patterns.</p>
+        <a class="detail" href="{{url_for('coexpressionDetail')}}" target="_self">See TFs in each Module</a>
+        <img class="img-responsive" src="{{url_for('static',filename='img/coexpression_2.jpg')}}">
+    </div>
+</div>
+{% endblock %}

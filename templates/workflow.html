@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li class="active">Workflow</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="tissue-title">Workflow</h2>
+        </div>
+    </div>
+</div>
+<div class="container analysis">
+    <div>
+        <p>Nuclear extract (NE) were prepared from each tissue, and then the catTFRE pull down was carried out and analyzed by LC-MS/MS to obtain the primary data. (See the Methods section for details.)</p>
+        <img class="img-responsive" src="{{url_for('static',filename='img/workflow_1.jpg')}}">
+    </div>
+    <div>
+        <p>The data were analyzed with a homemade platform and stored in the mouse TF atlas database.</p>
+        <img style="padding-bottom:40px" class="img-responsive" src="{{url_for('static',filename='img/workflow_2.jpg')}}">
+    </div>
+</div>
+{% endblock %}

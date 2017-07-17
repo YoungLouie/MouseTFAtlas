@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li class="active">Data analysis</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="tissue-title">TF-TF interaction</h2>
+        </div>
+    </div>
+</div>
+<div class="container analysis">
+    <div class="space">
+        <p>Interaction network of all TFs in the 24 tissues. The colors indicate the tissue-specificity score (TSPS), and the node size shows the number of PPIs of the TF.</p>
+        <a class="detail" href="{{url_for('interactionDetail')}}" target="_self">See PPIs of all TFs in the 24 tissues</a>
+        <img class="img-responsive" src="{{url_for('static',filename='img/interaction_1.jpg')}}">
+    </div>
+    <div class="space">
+        <p>TF interactions between Meis1 and Homobox TFs in different tissues. As a facilitator hub, Meis1 interacts with different TFs in the Hox family in different tissues, showing the specificity of the interaction was determined by Homobox TFs, namely the ttr TFs.</p>
+        <img class="img-responsive" src="{{url_for('static',filename='img/interaction_2.jpg')}}">
+    </div>
+</div>
+{% endblock %}
