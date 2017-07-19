@@ -8,6 +8,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 app = Flask(__name__)
+app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 engine=create_engine('mysql://root:mysql122500@localhost/mouse_tf_atlas')
 @app.route('/')
 def index():
